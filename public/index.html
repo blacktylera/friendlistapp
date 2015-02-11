@@ -1,0 +1,47 @@
+<!doctype html>
+
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Title</title>
+    <link rel="stylesheet" href="../bower_components/skeleton/css/skeleton.css">
+    <link rel="stylesheet" href="css/main.css">
+      </head>
+  <body>
+
+    <h1> Friend List </h1>
+    <h2> <input id="newContact" type="button" value="New Contact"> </h2>
+
+
+    <form id=friendForm action="#">
+      <p>Name</p>
+        <input type="text" id=friendName name="name" placeholder="What is your Name?">
+      <p> Phone </p>
+        <input type="text" id=friendPhone name="phone" placeholder="Phone?">
+      <p> Twitter </p>
+        <input type="text" id=friendTwitter name="twitter" placeholder="What is your twitter?">
+      <p> Photo </p>
+        <input type="text" id=friendPhoto name="photo" placeholder="Share a photo!">
+      <p>
+        <input type="button" id="button" value="Let's be friends">
+      </p>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Twitter</th>
+          <th>Photo</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

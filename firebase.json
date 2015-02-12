@@ -1,6 +1,6 @@
 {
-  "firebase": "friendlistapp",
-  "public": ".",
+  "firebase": "yourfriends",
+  "public": "public",
   "ignore": [
     "firebase.json",
     "**/.*",

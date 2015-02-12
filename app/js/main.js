@@ -10,13 +10,20 @@ var $form        = $('form'),
     fb           = new Firebase(FIREBASE_URL),
     usersFbUrl;
 
+
 function init () {
   hideFriendForm();
   $('#newContact').click(revealFriendForm);
   if (fb.getAuth()) {
     $('.login').remove();
+    console.log("here");
     $('.loggedIn').toggleClass('hidden');
+    $('.table').toggleClass('hidden');
+
+  
     getUserData ();
+
+
   };
   //$.get('https://friendlistapp.firebaseio.com/.json', function(res){
      //Object.keys(res).forEach(function(uuid){
@@ -26,7 +33,6 @@ function init () {
      //});
   //});
 }
-
 
 
 
@@ -45,6 +51,8 @@ function getUserData () {
 }
 
 // Login
+
+
 
 $('.login input[type="button"]').click(function(event){
   var $loginForm = $(event.target).closest('form'),
@@ -79,7 +87,6 @@ $('.logout').click(function(){
   fb.unauth();
   location.reload(true);
 });
-    
 
 
 $('#button').on('click', function (event) {
@@ -91,7 +98,7 @@ $('#button').on('click', function (event) {
     var photo = $('#friendPhoto').val();
 
 
-    var $tr = $('<tr><td>' + name + '</td><td>' + phone + '</td><td>' + twitter + '</td><td><img src=' + photo + '</td><td>' + '<button class="removeButton">OOO Kill Em' + '</button>' + '</td>' + '</tr>');
+    var $tr = $('<tr><td>' + name + '</td><td>' + phone + '</td><td>' + twitter + '</td><td><img class="profilePic" src="' + photo + '"></td><td>' + '<button class="removeButton">OOO Kill Em' + '</button>' + '</td>' + '</tr>');
     $tbody.append($tr);
     var data = JSON.stringify({name: name, phone: phone, twitter: twitter, photo: photo});
 
@@ -105,12 +112,14 @@ $('#button').on('click', function (event) {
 
 function addRowToTable(uuid, data) {
   console.log('data :', data);
-  var $tr = $('<tr><td>' + data.name + '</td>' + '<td>' + data.phone + '</td>' + '<td>' + data.twitter + '</td>' + '<td>' + '<img src=' + data.photo + '</td>' + '</td>' + '<td>' + '<button class="removeButton">OOO Kill Em'+ '</button>' + '<td>' + '</tr>');
+  var $tr = $('<tr><td>' + data.name + '</td>' + '<td>' + data.phone + '</td>' + '<td>' + data.twitter + '</td>' + '<td>' + '<img class="profilePic" src="' + data.photo + '"></td>' + '</td>' + '<td>' + '<button class="removeButton">OOO Kill Em'+ '</button>' + '<td>' + '</tr>');
 
   $tr.attr('data-uuid', uuid);
   $tbody.append($tr);
 
   $('tbody').on('click', '.removeButton', function(evt){
+   var audio = $("#mysoundclip")[0];
+    audio.play();
   var $tr = $(evt.target).closest('tr');
   $tr.remove();
 
@@ -134,7 +143,7 @@ function hideFriendForm () {
 
 
 function revealFriendForm() {
-  var $friendForm = $('#friendForm').show();
+  var $friendForm = $('#friendForm').toggle();
   return $friendForm;
 
 
